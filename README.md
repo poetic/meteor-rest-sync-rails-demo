@@ -1,5 +1,17 @@
 This application is an example implementation of a remote restful api for use with [poetic:rest-sync](https://github.com/poetic/meteor-rest-sync) meteor package.
 
+## Running
+
+Poll mode is avaliable by doing
+
+    rails s
+
+To enable sending changes and inserts as they occur in rails to meteor, you can start like so
+    
+    REST_SYNC_REALTIME='true' REST_SYNC_ROOT="http://127.0.0.1:3010" rails s
+
+assuming the meteor application is running locally at `http://127.0.0.1:3010`.  The value in `REST_SYNC_REALTIME` is unimportant.
+
 ## Overview
 This application works by making avaliable the JSON endpoints for the meteor application to submit to, and the index to fetch from.  The meteor side will have rest endpoint's setup for immediatly propogating changes made on the rails side.  Updates and inserts are document level, and in the case of conflict, the most recent timestamp is preferred.
 
